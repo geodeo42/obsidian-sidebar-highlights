@@ -339,7 +339,6 @@ export default class HighlightCommentsPlugin extends Plugin {
             id: 'create-highlight-with-comment',
             name: t('commands.createHighlightWithComment'),
             icon: 'message-square-text',
-            hotkeys: [{ modifiers: ['Mod', 'Shift'], key: 'y' }],
             editorCallback: (editor: Editor) => {
                 void this.createHighlight(editor, true);
             }
