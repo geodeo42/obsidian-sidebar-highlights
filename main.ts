@@ -329,6 +329,7 @@ export default class HighlightCommentsPlugin extends Plugin {
         this.addCommand({
             id: 'create-highlight',
             name: t('commands.createHighlight'),
+            icon: 'highlighter',
             editorCallback: (editor: Editor) => {
                 void this.createHighlight(editor);
             }

@@ -23,14 +23,14 @@ Collect every highlight, comment and task in your vault into one sidebar, then f
 
 Select text and choose **Create highlight** from the right-click menu, or run it from the command palette and give it a hotkey. Typing the syntax by hand works just as well.
 
-### Create highlight with comment
+### Create highlight from selection with comment
 
-Select text, then choose **Create highlight with comment** from the editor menu, run it from the Command palette, or press `Ctrl+Shift+Y` (`Cmd+Shift+Y` on macOS). The command uses the comment style selected in **Settings → Comments**:
+Select text, then choose **Create highlight from selection with comment** from the editor menu, run it from the Command palette, or press `Ctrl+Shift+Y` (`Cmd+Shift+Y` on macOS). The command uses the comment style selected in **Settings → Comments**:
 
 - **Inline comments on**: creates `==Selected text==^[]` and places the cursor inside the brackets.
 - **Inline comments off**: creates a standard footnote and moves the cursor to its definition.
 
-On mobile, open **Settings → Appearance → Advanced → Ribbon menu → Manage**. Add **Create highlight with comment**, then drag it where you want it in the menu. On desktop, use the editor menu, Command palette, or hotkey.
+On mobile, open **Settings → Appearance → Advanced → Ribbon menu → Manage**. Add **Create highlight from selection with comment**, then drag it where you want it in the menu. You can add **Create highlight from selection** there too. On desktop, use the editor menu, Command palette, or hotkey.
 
 | Syntax | Notes |
 | --- | --- |
