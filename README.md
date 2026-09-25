@@ -25,12 +25,12 @@ Select text and choose **Create highlight** from the right-click menu, or run it
 
 ### Create highlight from selection with comment
 
-Select text, then choose **Create highlight from selection with comment** from the editor menu, run it from the Command palette, or press `Ctrl+Shift+Y` (`Cmd+Shift+Y` on macOS). The command uses the comment style selected in **Settings → Comments**:
+Select text, then choose **Create highlight from selection with comment** from the editor menu, run it from the Command palette, add it to the mobile Ribbon Menu in **Settings → Appearance → Advanced → Ribbon menu → Manage**, or press `Ctrl+Shift+Y` (`Cmd+Shift+Y` on macOS). The command uses the comment style selected in **Settings → Comments**:
 
 - **Inline comments on**: creates `==Selected text==^[]` and places the cursor inside the brackets.
 - **Inline comments off**: creates a standard footnote and moves the cursor to its definition.
 
-On mobile, open **Settings → Appearance → Advanced → Ribbon menu → Manage**. Add **Create highlight from selection with comment**, then drag it where you want it in the menu. You can add **Create highlight from selection** there too. On desktop, use the editor menu, Command palette, or hotkey.
+On mobile, drag **Create highlight from selection with comment** where you want it in the Ribbon Menu. You can add **Create highlight from selection** there too. On desktop, use the editor menu, Command palette, or hotkey.
 
 | Syntax | Notes |
 | --- | --- |
