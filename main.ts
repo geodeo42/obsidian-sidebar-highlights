@@ -8,6 +8,7 @@ import { STANDARD_FOOTNOTE_REGEX, FOOTNOTE_VALIDATION_REGEX, createMarkdownHighl
 import { HtmlHighlightParser } from './src/utils/html-highlight-parser';
 import { hasDelimiterInsideRanges } from './src/utils/range-exclusion';
 import { SortMode } from './src/utils/sort-order';
+import { createInlineCommentHighlight } from './src/utils/inline-comment-highlight';
 import { i18n, t } from './src/i18n';
 
 export interface Highlight {
@@ -330,6 +331,16 @@ export default class HighlightCommentsPlugin extends Plugin {
         });
 
         this.addCommand({
+            id: 'create-highlight-with-inline-comment',
+            name: t('commands.createHighlightWithInlineComment'),
+            icon: 'message-square-text',
+            hotkeys: [{ modifiers: ['Mod', 'Shift'], key: 'y' }],
+            editorCallback: (editor: Editor) => {
+                void this.createHighlight(editor, true);
+            }
+        });
+
+        this.addCommand({
             id: 'open-highlights-sidebar',
             name: t('commands.toggle'),
             callback: () => {
@@ -346,6 +357,14 @@ export default class HighlightCommentsPlugin extends Plugin {
                             .setIcon('highlighter')
                             .onClick(() => {
                                 void this.createHighlight(editor);
+                            });
+                    });
+                    menu.addItem((item) => {
+                        item
+                            .setTitle(t('commands.createHighlightWithInlineComment'))
+                            .setIcon('message-square-text')
+                            .onClick(() => {
+                                void this.createHighlight(editor, true);
                             });
                     });
                 }
@@ -572,7 +591,7 @@ export default class HighlightCommentsPlugin extends Plugin {
         }
     }
 
-    async createHighlight(editor: Editor) {
+    async createHighlight(editor: Editor, withInlineComment = false) {
         const selection = editor.getSelection();
         if (!selection) {
             new Notice('Please select some text first');
@@ -605,8 +624,14 @@ export default class HighlightCommentsPlugin extends Plugin {
         fileHighlights.push(highlight);
         this.highlights.set(file.path, fileHighlights);
 
-        const highlightedText = `==${selection}==`;
-        editor.replaceSelection(highlightedText);
+        const inlineCommentHighlight = withInlineComment
+            ? createInlineCommentHighlight(selection)
+            : null;
+        editor.replaceSelection(inlineCommentHighlight?.replacement ?? `==${selection}==`);
+        if (inlineCommentHighlight) {
+            editor.setCursor(editor.offsetToPos(fromOffset + inlineCommentHighlight.cursorOffset));
+            editor.focus();
+        }
         this.refreshSidebar();
         new Notice('Highlight created');
     }
